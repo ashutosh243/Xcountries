@@ -8,8 +8,14 @@ const Countries=()=> {
   const [country,setCountry]=useState([]);
   useEffect(()=>{
            async function getCountry(){
+
+            try{
               let response=await axios.get('https://xcountries-backend.labs.crio.do/all');
               setCountry(()=>response.data);
+            }catch(e)
+            {
+                console.error(e);
+            }
 
            }
            getCountry();
